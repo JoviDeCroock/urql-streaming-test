@@ -22,14 +22,8 @@ app.get("/", (_req, res) => {
       res.write(chunk, cb);
     },
     final() {
-      res.write(
-        `
-<script>
-window.urqlData=${JSON.stringify(ssr.extractData())}
-</script>
-        `
-      );
-      res.end(end);
+      const newEnd = end.replace('<!-- DATA -->', `<script>window.urqlData=${JSON.stringify(ssr.extractData())}</script>`)
+      res.end(newEnd);
     },
   });
 

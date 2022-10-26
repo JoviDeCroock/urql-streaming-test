@@ -7,7 +7,7 @@ export const App = () => {
             <h1>
                 Pokemons
             </h1>
-            <Suspense>
+            <Suspense fallback={<p>Loading...</p>}>
                 <PokemonList />
             </Suspense>
         </main>
